@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slide</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            padding: 10px 20px;
+            width: 400px;
+            height: 230px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .container a {
+            height: 30px;
+            width: 30px;
+            padding: 5px;
+            border-radius: 50%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: #333;
+            text-align: center;
+            font-size: 20px;
+            align-content: center;
+            overflow: hidden;
+            position: absolute;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .container a:nth-child(1) {
+            left: 10px;
+        }
+
+        .container a:last-of-type {
+            right: 10px;
+        }
+
+        .container .c {
+            width: 250px;
+            height: 120px;
+            font-size: 12px;
+            font-weight: 500;
+            box-shadow: 12px 0 24px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 10px;
+            align-content: center;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a onclick="prev()">&laquo;</a>
+        <div class="c c1"><p>1. Use HTML to structure web pages.</p></div>
+        <div class="c c2"><p>2. Use CSS to give basic styling to the site.</p></div>
+        <div class="c c3"><p>3. Use JavaScript to make the site look and function dynamically</p></div>
+        <div class="c c4"><p>4. Finally use backend languages like django or Nodejs to create full stack application</p></div>
+        <a onclick="next()">&raquo;</a>
+    </div>
+
+    <script>
+        const items = document.querySelectorAll('.c');
+        const box = document.querySelector('.container');
+
+        let startX = 0;
+        let endX = 0;
+        box.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+        
+        box.addEventListener('touched', (e) => {
+            let endX = e.changedTouches[0].clientX;
+            handleSwipe();
+        });
+
+        const handleSwipe = () => {
+    const diff = startX - endX;
+    if (Math.abs(diff) > 50) { // sensitivity threshold
+      if (diff > 0) {
+        // Swiped left
+        next();
+      } else {
+        // Swiped right
+        prev();
+      }
+    }
+  }
+        
+        let i = 0;
+
+        const currentSlide = () => {
+            items.forEach(item => {
+                item.style.display ="none";
+            })
+            items[i].style.display = "block";
+        };
+
+        currentSlide();
+
+        const prev = () => {
+            if (i === 0) {
+                i = items.length - 1;
+            } else {
+                i--;
+            }
+            currentSlide();
+        }
+        
+        const next = () => {
+            if (i === items.length - 1) {
+                i = 0;
+            } else {
+                i++;
+            }
+            currentSlide();
+        }
+
+    </script>
+</body>
+</html>
