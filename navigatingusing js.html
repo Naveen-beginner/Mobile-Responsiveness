@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+</head>
+<body>
+<!--   For copy function: -->
+  <p>Click and check your clipboard whther I'm copied successfully</p>
+  <button onclick="navigator.clipboard.writeText("The text copied to your clipboard")>Click me</button>
+    <script>
+        document.write("Platform: " + "<br>" + navigator.platform + "<br>" + "<br>" + "<br>");
+        
+        document.write("App name: " + "<br>" + navigator.appName + "<br>" + "<br>" + "<br>");
+        
+        document.write("Language: " + "<br>" + navigator.language + "<br>" + "<br>" + "<br>");
+        
+        document.write("App version: " + "<br>" + navigator.appVersion + "<br>" + "<br>" + "<br>");
+        
+        document.write("App code name" + "<br>" + navigator.appCodeName + "<br>" + "<br>" + "<br>");
+        
+        document.write("User agent " + "<br>" + navigator.userAgent + "<br>" + "<br>" + "<br>");
+      
+        document.write("Online: " + "<br>" + navigator.onLine);
+
+        navigator.getBattery().then(battery => {
+          document.write("Battery level: ", battery.level * 100 + "%");
+        }
+        
+    </script>
+</body>
+</html>
