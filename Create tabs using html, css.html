@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+    
+    <style>
+        
+        .slider {
+            overflow: hidden;
+            height: 500px;
+            left: 0;
+        }
+        
+        .slider>figure {
+            position: relative;
+            width: 500%;
+            margin: 0;
+            left: 0;
+            animation: slide 8s infinite;
+        }
+        
+        figure img {
+            width: 20%;
+            float: left;
+            margin-left: 10px;
+        }
+        
+        @media(max-width: 468px) {
+            .slider {
+                height: 230px;
+            }
+        }
+                
+        @keyframes slide {
+            0% {
+                left: 0;
+            }
+            25% {
+                left: 0;
+            }
+            50% {
+                left: -100%;
+            }
+            80% {
+                left: -200%;
+            }
+            100% {
+                left: 0;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <header>
+        
+        <div class="slider">
+            
+            <figure>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy6-iq-VYUK5U8GmegowvyE52u2nRy6MHEy2i_Ic0rbgl3l7QTgA22dxw&s=10" alt="google's'">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsqvZs8FXf8zY65FWUQz_T5gXmE28DqRdy4A&usqp=CAU" alt="open ai's'">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2Xo0upzH0UadqMNoKasJYA2zR8BgaRW7hIg&usqp=CAU" alt="microsoft's">                 
+            </figure>
+        </div>        
+    </header>
+</body>
+</html>
