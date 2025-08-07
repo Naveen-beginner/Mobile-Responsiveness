@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todoo listed app</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #1b1e0fe1;
+            gap: 20px;
+        }
+        
+        .grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+            background: #ffffff;
+            border: 1px solid white;
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        
+        #container {
+            background: #ffffff;
+            border: 1px solid white;
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+            font-family: georgia;
+            font-size: 15px;
+            overflow: auto;
+        }
+        
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flx-direction: row;
+            gap: 5px;
+        }
+        
+        input[type=text] {
+            width: 150px;
+            height: 30px;
+            outline: none;
+            border: 1px solid silver;
+            border-radius: 8px;
+        }
+        
+        input[type=checkbox] {
+            margin-right: 10px;
+            accent-color: yellowgreen;
+            border: 1px solid white;
+            outline: none;
+        }
+        
+        #btn1, #btn2 {
+            border-radius: 4px;
+            height: 20px;
+            width: 70px;
+            border: 1px solid silver;
+            outline: none;
+            background: transparent;
+            font-weight: 600;
+            color: black;
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s linear;
+        }
+        
+        #btn1:hover, #btn2:hover {
+            box-shadow: rgba(0,0,0,0.1) 42px 74px 102px 56px;
+            transform: scale(1.0);
+        }
+        
+        #close-task {
+            background: transparent;
+            color: gray;
+            text-align: center;
+            width: 15px;
+            height: 15px;
+            border: 1px solid silver;
+            outline: none;
+            border-radius: 3px;
+            margin-left: 10px;
+        }
+        
+        .label {
+            margin-right: 10px;
+            font-size: 15px;
+            font-weight: 400;
+            font-family: arial;
+        }
+        </style>
+</head>
+<body>
+    <div class="grid">
+    <input type="text" id="input" placeholder="Enter task...">
+    
+        
+    <br> <br>
+    <div class="row"><input type="button" id="btn1" value="+">
+  <br> <br>
+    <input type="button" id="btn2" value="Clear"></div>
+    </div>
+    
+    <div id="container">
+        <h4 style="font-family: times; font-size: 20px; font-weight: 400;">List of tasks: </h4>
+    </div>
+    
+    <script>
+        const input = document.getElementById("input");
+        
+        const container = document.getElementById("container");
+        
+        const btn1 = document.getElementById("btn1");
+        
+        const btn2 = document.getElementById("btn2");
+        
+        btn1.addEventListener('click', () => {
+            if(input.value.trim() == "") {
+                alert("Please enter a task.");
+                return;
+            }
+            
+            const newTask = document.createElement("div");
+            newTask.id = "wrapper";
+            
+            const newCheck = document.createElement("input");
+            newCheck.type = "checkbox";
+                        
+            const label = document.createElement("label");
+            label.textContent = input.value;
+            label.id = "label";
+                        
+            const closeBtn = document.createElement("input");
+            closeBtn.type = "button";
+            closeBtn.value = "×";
+            closeBtn.id = "close-task";
+            
+            closeBtn.addEventListener('click', () => {
+                newTask.remove();
+            });   
+            
+            newTask.appendChild(newCheck);
+            newTask.appendChild(label);
+            newTask.appendChild(closeBtn);
+            
+            container.appendChild(newTask);
+            
+            input.value = "";
+            
+            newCheck.addEventListener('change', () => {
+                if(newCheck.checked) {
+            label.style.textDecoration = "line-through";               
+            }else {
+            label.style.textDecoration = "none";              
+            }
+            
+            });
+        });
+        
+        btn2.addEventListener('click', () => {
+            container.innerHTML = "";
+        });
+    </script>
+    
+</body>
+</html>
