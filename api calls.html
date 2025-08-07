@@ -1,0 +1,15 @@
+<!-- This is an example of API Calls from a free API - DOG API -->
+
+<img src="" id="img">
+<button id="btn">Click</button>
+<script>
+    const btn = document.getElementById('btn');
+    const img = document.getElementById('img');
+    btn.addEventListener('click', () => {
+        fetch('https://dog.ceo/api/breeds/image/random').then(res => res.json())
+        .then(data => {
+        img.src=data.message;
+        }
+        )
+    })
+</script>
