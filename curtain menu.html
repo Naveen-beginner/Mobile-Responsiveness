@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+    <style>
+        body {
+           display: flex;
+           justify-content: center;
+           height: 100vh;
+           margin: 0;  
+           padding: 0;
+           align-items: center;
+           }
+           
+           a {
+               text-decoration: none;
+               color: black;
+               display: inline-block;
+               padding: 12px;
+               text-align: center;
+           }
+           
+           #nav {
+               background: #a5bd7e;
+               width: 0%;
+               height: 100%;
+               top: 0;
+               left: 0;
+               transition: width 0.2s ease-in-out;
+               overflow: hidden;
+               position: fixed;
+           }
+           
+           button {
+               background: white;
+               width: 100px;
+               height: 50px;
+               color: black;
+               border: none;
+               padding: 8px;
+               border-radius: 4px;
+               font-size: 30px;
+               font-weight: 700;
+               transition: background, color 0.2s linear;
+           }
+           
+           button:hover {
+               background: black;
+               color: white;
+           }
+           
+           #close {
+               background: transparent;
+               border-radius: 3px;
+               text-decoration: none;
+               color: black;
+               display: inline-block;
+               float: right;
+               padding: 10px;
+               text-align: center;
+               border: none;
+           }
+           
+           #close:hover {
+              background: white; 
+              color: gray;
+           }
+    </style>
+</head>
+<body>
+    <button onclick="out()">&#9776; </button>
+    <div id="nav">
+        <a href="#" onclick="go()" id="close">&times; </a>
+        <a href="#">Home</a>
+        <a href="#">Support</a>
+        <a href="#">Report</a>
+        <a href="#">Outer</a>
+    </div>
+    <script>
+   function out() {
+document.getElementById("nav").style.width = "100%";
+        }
+        
+   function go() {     
+document.getElementById("nav").style.width = "0%";
+        }
+    </script>
+</body>
+</html>
