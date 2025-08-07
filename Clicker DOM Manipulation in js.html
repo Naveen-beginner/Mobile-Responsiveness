@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Manipulation Demo</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+    button { margin: 5px; padding: 8px 12px; }
+    #box { background: lightblue; padding: 10px; margin: 10px 0; }
+    .highlight { background: yellow; color: red; }
+  </style>
+</head>
+<body>
+
+  <h1 id="title">DOM Manipulation Demo</h1>
+
+  <div id="box">This is a box</div>
+
+  <input type="text" id="input" value="Hello World">
+  <button onclick="updateText()">Change Text</button>
+  <button onclick="toggleClass()">Toggle Class</button>
+  <button onclick="changeStyle()">Change Style</button>
+  <button onclick="addElement()">Add Element</button>
+  <button onclick="removeElement()">Remove Element</button>
+  <button onclick="replaceElement()">Replace Element</button>
+  <button onclick="setAttr()">Set Attribute</button>
+  <button onclick="removeAttr()">Remove Attribute</button>
+  <button onclick="cloneNode()">Clone Box</button>
+  <button onclick="traverseDOM()">Traverse DOM</button>
+
+  <div id="container"></div>
+
+  <script>
+    const box = document.getElementById("box");
+    const container = document.getElementById("container");
+
+    function updateText() {
+      const input = document.querySelector("#input").value;
+      box.textContent = input;
+    }
+
+    function toggleClass() {
+      box.classList.toggle("highlight");
+    }
+
+    function changeStyle() {
+      box.style.border = "2px solid green";
+      box.style.transform = "scale(1.1)";
+    }
+
+    function addElement() {
+      const newPara = document.createElement("p");
+      newPara.textContent = "New paragraph added!";
+      container.appendChild(newPara);
+    }
+
+    function removeElement() {
+      if (container.lastChild) {
+        container.removeChild(container.lastChild);
+      }
+    }
+
+    function replaceElement() {
+      const newBox = document.createElement("div");
+      newBox.textContent = "Box has been replaced!";
+      newBox.style.background = "#ffcccc";
+      newBox.id = "box"; // keep same ID for continued manipulation
+      box.parentNode.replaceChild(newBox, box);
+    }
+
+    function setAttr() {
+      box.setAttribute("data-custom", "customValue");
+      alert("Custom attribute set: " + box.getAttribute("data-custom"));
+    }
+
+    function removeAttr() {
+      box.removeAttribute("data-custom");
+      alert("Custom attribute removed.");
+    }
+
+    function cloneNode() {
+      const clone = box.cloneNode(true); // deep clone
+      clone.textContent += " (Cloned)";
+      clone.style.background = "#ddd";
+      container.appendChild(clone);
+    }
+
+    function traverseDOM() {
+      const childNodes = document.body.childNodes.length;
+      const parent = box.parentNode.tagName;
+      const next = box.nextElementSibling?.tagName;
+      const prev = box.previousElementSibling?.tagName;
+
+      alert(`Total body childNodes: ${childNodes}
+Parent: ${parent}
+Next Sibling: ${next}
+Previous Sibling: ${prev}`);
+    }
+  </script>
+
+</body>
+</html>
