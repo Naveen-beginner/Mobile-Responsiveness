@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+    <style>
+        body {
+            font-family: times;
+        }
+        
+        li {
+            list-style: none;
+            font-size: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        li a {
+            text-decoration: none;
+            text-align: center;
+            padding: 20px;
+            color: black;
+        }
+        
+        #mysidenav a {
+            position: absolute;
+            left: -80px;
+            transition: 0.3s;
+            padding: 15px;
+            width: 100px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        #mysidenav a:hover {
+            left: 0;
+        }
+        
+        #about {
+            top: 20px;
+            background: #ba80ff;
+            color: white;
+        }
+        
+        #services {
+            top: 80px;
+            background: #ff0a00;
+            color: white;
+        }
+        
+        #clients {
+            top: 140px;
+            background: black;
+            color: white;
+        }
+        
+        #contact {
+            top: 200px;
+            background: #555;
+        }
+        
+        
+        </style>
+        
+    </head>
+<body>
+    <div class="sidenav" id="mysidenav">
+    <ul>
+    <li><a href="#" id="about">About</a></li>
+<li><a href="#" id="services">Services</a></li>
+<li><a href="#" id="clients">Clients</a></li>
+<li><a href="#" id="contact">Contact</a></li>
+    </ul>
+    </div>
+    
+</body>
+</html>
