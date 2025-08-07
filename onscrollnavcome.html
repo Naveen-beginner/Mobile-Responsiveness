@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+    <style>
+       #nav {
+        position: fixed;
+        top: -55px;
+        left: 0;
+        background: black;
+        width: 100%;
+        transition: top 0.3s;
+    }
+    
+   #nav a {
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        padding: 8px;
+        margin: 10px;
+        display: block;
+        float: left;
+    }
+    
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <a href="#">Home</a>
+        <a href="#">Support</a>
+        <a href="#">Contact</a>
+        <a href="#">Report</a>
+    </div>
+    <p>Add some dummy text to see the effect</p>
+<script> 
+    window.onscroll = function() {
+        scrollFunction()
+    };
+    
+    function scrollFunction() {
+        if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+         document.getElementById("nav").style.top = "0";
+        }else {
+            document.getElementById("nav").style.top = "-55px"; 
+        }
+    }
+</script>
+</body>
+</html>
